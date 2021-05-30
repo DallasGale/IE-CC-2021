@@ -1,0 +1,17 @@
+$phone-end: '650px';
+$tablet-end: '950px';
+
+@mixin respond-to($media) {
+  @if $media == phone-above {
+    @media only screen and (min-width: $phone-end) {
+      @content;
+    }
+  }
+}
+@mixin respond-to($media) {
+  @if $media == tablet-above {
+    @media only screen and (min-width: $tablet-end) {
+      @content;
+    }
+  }
+}

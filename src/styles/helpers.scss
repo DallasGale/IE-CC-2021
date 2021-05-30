@@ -1,0 +1,6 @@
+$transition: all 0.35s ease-in-out;
+
+$gridSize: 60vw;
+$gridSizeAboveTablet: 80vh;
+$cellSize: calc($gridSize / 5);
+$cellSizeAboveTablet: calc(80vh / 5);
