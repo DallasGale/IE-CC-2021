@@ -1,16 +1,5 @@
-import {validFaceDirectionCheck,  place, move, left, right, report } from "."
-import { FACE_DIRECTONS } from "../constants"
+import { move, left, right , report} from "./index"
 
-// test('place', () => {
-//   expect(place(0, 0, 'NORdTH')).toBe('NORTH: 8');
-// });
-
-// test("validFaceDirectionCheck", () => {
-//   expect(validFaceDirectionCheck("fr")).toBe(false)
-// })
-// test("validFaceDirectionCheck", () => {
-//   expect(validFaceDirectionCheck("NORTH")).toBe(true)
-// })
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // >> move()
@@ -67,6 +56,7 @@ test('turn left when facing WEST', () => {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // >> turn right()
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 test('turn right when facing NORTH', () => {
   expect(right("NORTH")).toBe("EAST");
 });
@@ -83,14 +73,10 @@ test('turn right when facing WEST', () => {
   expect(right("WEST")).toBe("NORTH");
 });
 
-// test('init report', () => {
-//   expect(report(0,0,"right")).toBe({x: 0, y: 0, face: "right"})
-// })
 
-// PLACE 0,0,NORTH
-
-// MOVE
-
-// REPORT
-
-// Output: 0,1,NORTH
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >> turn right()
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+test('report current position', () => {
+  expect(report("NORTH", 3,  0)).toEqual({face: "NORTH", x: 3, y: 0});
+});
