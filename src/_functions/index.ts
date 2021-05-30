@@ -13,7 +13,6 @@ export function validFaceDirectionCheck(f: string) {
   const check = Object.values(FACE_DIRECTONS).includes(f);
   return check;
 }
-// 1. FIRST Valid command is place(..)
 
 export function place(x: number, y: number, f: string) {
   const output = {
