@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-import type { FaceTypes, PositionTypes } from "../types";
+import type { FaceTypes } from "../types";
 
 interface PacmanProps {
   face: FaceTypes;
-  x: PositionTypes;
-  y: PositionTypes;
+  x: number;
+  y: number;
 }
 const Pacman: React.FC<PacmanProps> = ({ face, x, y }) => {
   return (

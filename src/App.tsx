@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./app.scss";
 
 //  Functions
-import { report, move, left, right } from "./_functions";
+import { report, move, left, right } from "./_functions/index";
 
 // Types
-import type { DirectionTypes, FaceTypes, PositionTypes } from "./types";
+import type { FaceTypes } from "./types";
 import { FACE_DIRECTONS } from "./constants";
 
 //  Components
-import Pacman from "./pacman";
+import Pacman from "./pacman/index";
 
 interface GridProps {
   cellIds: Number[];
@@ -52,7 +52,7 @@ const GridRow: React.FC<GridProps> = ({ cellIds }) => (
 
 const App = () => {
   // initial state
-  const [pos, setPos] = useState<PositionTypes>({ x: 0, y: 0 });
+  const [pos, setPos] = useState({ x: 0, y: 0 });
   const [face, setFace] = useState<FaceTypes>("NORTH");
 
   // placed stated
@@ -64,10 +64,11 @@ const App = () => {
   const [reportText, setReportText] = useState("");
 
   // Handlers
-
   const handleMove = (face: FaceTypes, x: number, y: number) => {
     const output = move(face, x, y);
-    setPos({ x: output.x, y: output.y });
+    if (output) {
+      setPos({ x: output.x, y: output.y });
+    }
     if (
       (face === FACE_DIRECTONS.n && y === 4) ||
       (face === FACE_DIRECTONS.s && y === 0) ||
@@ -88,16 +89,14 @@ const App = () => {
     setFace(output);
   };
 
-  const handleReport = (
-    x: PositionTypes,
-    y: PositionTypes,
-    face: FaceTypes
-  ) => {
-    const r = report(x, y, face);
-    setReportText(`co-ordinates - x: ${r.x} -  y: ${r.y} - face: ${face}`);
+  const handleReport = (x: number, y: number, face: FaceTypes) => {
+    const output = report(face, x, y);
+    setReportText(
+      `co-ordinates - x: ${output.x} -  y: ${output.y} - face: ${face}`
+    );
   };
 
-  const handleSubmit = (e: React.MouseEvent) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setPos({ x: placeX, y: placeY });
     setFace(placeFace);

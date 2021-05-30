@@ -1,4 +1,4 @@
-import type { FaceTypes, PositionTypes } from "../types";
+import type { FaceTypes } from "../types";
 import { FACE_DIRECTONS } from "../constants";
 
 // init. state
